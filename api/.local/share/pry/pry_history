@@ -1,0 +1,223 @@
+company
+hash
+hash[:place]
+hash[:places]
+hash[:places]="daini,kasuga,daisan"
+hash[:places].split(",")
+exit
+company
+hash
+hash[:places]
+hash[:places].split(',')
+hash[:activity_day]
+hash[:activity_day].split(',')
+place_arry = hash[:places].split(',')
+company.company_places = place_arry.map do |place|
+  company.company_places.build(place: place)
+end
+exit
+@company
+@companies
+scope = Company.all
+exit
+Company.all
+Art.all
+Keyword.all
+exit
+Company.all
+Company.company_place
+Company.company_places
+Company.company_culture
+Company.culture
+Company.place
+Company.places
+Place.all
+Company.first
+Company.first.places
+Company.first.company_places
+exit
+json
+json.athletic
+json.culture
+json.art
+json.call(
+  company,
+  :id,
+  :name,
+  :number,
+  :detail,
+  # :places,
+  :images_path,
+  # :activity_day,
+  :hp_link,
+  :twitter_link,
+  :instagram_link,
+  :company_category
+)
+json.culture do
+  json.partial! 'cultures/culture', culture: company.culture
+end
+json.athletic do
+  json.partial! 'athletics/athletic', athletic: company.athletic
+end
+json.art do
+  json.partial! 'arts/art', art: company.art
+end
+json.activity_day company.activity_day.map do |day|
+  json.merge! day
+end
+keywords = company.keyword
+json.keywords keywords.uniq.map do |keyword|
+  json.merge! keyword
+end
+exit
+exitt
+exit
+company
+company.keywor
+company.keyword
+company.places
+company.place
+exit
+company
+company.place
+company.places
+company.keyword
+company.keywords
+company.art
+exit
+reload!
+exit
+reload!
+exit
+!!!
+Places
+Place
+Place.all
+Place.enum_hash
+Place.to_option
+Place.to_options
+company=Company.first
+company=Company.find(48)
+company.place
+company.places
+company.company_places
+exit
+json
+keywords
+keywords = company.keyword
+company.keyword
+company
+company.company_places
+company.company_places.place
+company.company_places[0]
+company.company_places[0].place
+exit
+next
+exit
+!!!
+Company
+Company.all
+Company.company_places
+Company.places
+Company.place
+Company.company_place
+Company.companyPlace
+Company.companyPlaces
+Company.join(company_place)
+scope :search_with_business_category, ->(business_category_keys) {
+  return if business_category_keys.blank?
+  scope = left_joins(:subsidy_business_categories)
+  categories = SubsidyBusinessCategory.where(business_category: business_category_keys)
+  scope.merge(categories).or(scope.where(subsidy_business_categories: { id: nil })).distinct
+}
+companies=Company.all
+Company.left_joins(:company_places) 
+categories = SubsidyBusinessCategory.where(business_category: business_category_keys)    
+[10] pry(main)*   scope.merge(categories).or(scope.where(subsidy_business_categories: { id: nil })).distinct    
+places = CompanyPlace.where(places: "daiiti")    
+places.all
+places = CompanyPlace.all
+places = CompanyPlace.where(places: "kasuga")    
+places.count
+places = CompanyPlace.where(place: "kasuga")    
+scope.merge(places)
+scope = left_joins(:subsidy_business_categories)
+scope = left_joins(:company_places)
+scope = left_joins(:company_place)
+Company.merge(places)
+Company.merge(places).all
+Company.merge(places).count
+Company.left_joins(:company_place) 
+Company.merge(places).count
+Company.left_joins(:company_place)
+Company.left_joins(:company_place).count
+Company.left_joins(:company_places).count
+Company.left_joins(:company_places)
+places = CompanyPlace.where(places: "kasuga")
+places = CompanyPlace.where(places: "kasuga").count
+places = CompanyPlace.where(place: "kasuga").count
+places = CompanyPlace.where(place: "kasuga")
+Company.merge(places)
+Company.merge(places).count
+Company.left_joins(:company_places)
+scope=Company.left_joins(:company_places)
+scope.merge(places)
+scope.merge(places).count
+scope
+scope.where(company_places: { id: nil })
+scope = Company.left_joins(:company_activity_days)
+activity_days = CompanyActivityDay.where(activity_day: day)
+day=["mon","wed","fri"]
+activity_days = CompanyActivityDay.where(activity_day: day)
+scope.merge(activity_days)
+scope.merge(activity_days).pluck(:name)
+scope.merge(activity_days).distinct
+scope.merge(activity_days).distinct.count
+scope.merge(activity_days).count
+scope.merge(activity_days).pluck(:name).distinct
+scope.merge(activity_days).distinct.pluck(:name)
+day=["mon","wed","fri"]
+exit
+Company.joins(:company_athletic)
+scope=Company.joins(:company_athletic)
+CompanyAthletic
+CompanyAthletic.all
+scope=Company.joins(:company_athletic).first
+scope.athletic
+scope=Company.joins(:company_athletic)
+scope.where(athletic.name: "ラクロス")
+scope.where(name: "ラクロス")
+scope.athletic
+scope=Company.joins(:company_athletic)
+CompanyAthletic.all
+CompanyAthletic.where(name: "ラクロス")
+CompanyAthletic.where(name: "ラクロス").count
+CompanyAthletic.where(athletic: { name: "ラクロス" })
+CompanyAthletic.where(athletic: { name: "ラクロス" }).count
+Athletic.where(name: "ラクロス")
+Athletic.where(name: "ラクロス").pluck(:id)
+scope=Company.joins(:company_athletic)
+target=Athletic.where(name: "ラクロス").pluck(:id)
+scope.where(company_athletics: {id:target})
+scope.where(company_athletics: {athleticid: target})
+scope.where(company_athletics: {athletic_id: target})
+CompanyActivityDay.all
+Keyword
+Keyword.all
+exit
+content
+@company.company_keywords
+CompanyKeyword
+keyword = Keyword.where(content: content)
+key=keyword[0]
+@company.company_keywords.build(keyword: key)
+@company.save
+exit
+Keyword.all
+keyword = Keyword.select(content:"いたい")
+keyword.count
+keyword = Keyword.find_by(content:"いたい")
+keyword = Keyword.where(content:"いたい")
+keyword[0]
+exit
