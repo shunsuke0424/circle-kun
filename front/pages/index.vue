@@ -144,27 +144,41 @@
                 </el-tag>
                 <el-tag
                   v-if="company.culture"
-                  type="info"
+                  type="success"
                   size="mini"
+                  effect="plain"
                   class="category-tag"
                 >
                   {{ company.culture.name }}
                 </el-tag>
                 <el-tag
                   v-if="company.art"
-                  type="info"
+                  type="primary"
                   size="mini"
+                  effect="plain"
                   class="category-tag"
                 >
                   {{ company.art.name }}
                 </el-tag>
                 <el-tag
                   v-if="company.athletic"
-                  type="info"
+                  type="danger"
                   size="mini"
+                  effect="plain"
                   class="category-tag"
                 >
                   {{ company.athletic.name }}
+                </el-tag>
+              </div>
+              <div class="keyword-container">
+                <el-tag
+                  v-for="keyword in company.keywords"
+                  :key="keyword.id"
+                  type="warning"
+                  size="mini"
+                  class="category-tag keyword-tag"
+                >
+                  {{ keyword.content }}
                 </el-tag>
               </div>
               <!-- カテゴリ -->
@@ -380,6 +394,9 @@ export default defineComponent({
   font-size: 12px;
   text-align: left;
   margin: 16px;
+}
+.keyword-tag {
+  margin-right: 4px;
 }
 .second-keyword-container {
   margin: 16px 16px 0;

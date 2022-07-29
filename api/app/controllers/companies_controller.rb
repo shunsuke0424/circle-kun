@@ -2,7 +2,7 @@ class CompaniesController < ApplicationController
   def index
     scope = Company.all
     filter_params = params.slice(:company_category, :keyword, :place, :day, :category_name)
-    scope = scope.scope_by_user(filter_params).order("RANDOM()")
+    scope = scope.scope_by_user(filter_params).order(number: :asc)
     @companies = scope
   end
 
@@ -43,9 +43,9 @@ class CompaniesController < ApplicationController
     @company.company_activity_days = params[:activity_days].to_a.map do |day|
       @company.company_activity_days.build(activity_day: day)
     end
-    # keywords = params.permit(:keywords)[:keywords]
-    @company.company_keywords = params[:keywords].to_a.map do |content|
-      keyword = Keyword.find_by(content: content)
+    keywords = params.permit(:keywords)[:keywords].to_s.split(/[[:space:]]/).reject(&:blank?).uniq
+    @company.company_keywords = keywords.to_a.map do |content|
+      keyword = Keyword.create_or_find_by(content: content)
       @company.company_keywords.build(keyword: keyword)
     end
     @company.art = Art.where(name: params[:category_name]).first

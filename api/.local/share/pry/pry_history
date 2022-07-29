@@ -221,3 +221,38 @@ keyword = Keyword.find_by(content:"いたい")
 keyword = Keyword.where(content:"いたい")
 keyword[0]
 exit
+@company=Company.find(2)
+keywords = params.permit(:keywords)[:keywords].to_s.split(/[[:space:]]/).reject(&:blank?).uniq
+@company.company_keywords = keywords.to_a.map do |content|
+  # keyword = Keyword.find_by(content: content)
+  keyword = Keyword.create_or_find_by(content: content)
+  @company.company_keywords.build(keyword: keyword)
+end
+keys="初心者歓迎 ゆるい 雰囲気重視"
+keywords =keys.to_s.split(/[[:space:]]/).reject(&:blank?).uniq
+@company.company_keywords = keywords.to_a.map do |content|    
+  [3] pry(main)*   # keyword = Keyword.find_by(content: content)      
+  [3] pry(main)*   keyword = Keyword.create_or_find_by(content: content)      
+[3] pry(main)*   @company.company_keywords.build(keyword: keyword)      
+@company.company_keywords = keys.to_a.map do |content|  
+  keyword = Keyword.create_or_find_by(content: content)  
+  @company.company_keywords.build(keyword: keyword) 
+end
+@company.company_keywords = keywords.to_a.map do |content|  
+  keyword = Keyword.create_or_find_by(content: content) 
+  @company.company_keywords.build(keyword: keyword) 
+end
+@company.save
+keys="初心者歓迎 和気あいあい"
+keywords =keys.to_s.split(/[[:space:]]/).reject(&:blank?).uniq
+@company.company_keywords = keywords.to_a.map do |content|  
+  keyword = Keyword.create_or_find_by(content: content) 
+  @company.company_keywords.build(keyword: keyword) 
+end
+@company.save
+keywords = params.permit(:keywords)[:keywords].to_s.split(/[[:space:]]/).reject(&:blank?).uniq
+@company.company_keywords = keywords.to_a.map do |content|
+  keyword = Keyword.create_or_find_by(content: content)
+  @company.company_keywords.build(keyword: keyword)
+end
+exit

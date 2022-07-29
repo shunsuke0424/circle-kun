@@ -72,7 +72,7 @@ if Rails.env.development?
   cultures = Culture.all.index_by(&:name)
   arts = Art.all.index_by(&:name)
 
-  company_hashes = CSV.open('db/circle_database4.csv', headers: true,liberal_parsing: true).to_a.map do |row|
+  company_hashes = CSV.open('db/circle_database5.csv', headers: true,liberal_parsing: true).to_a.map do |row|
     {
       name: row['name'],
       company_category: row['company_category'],
@@ -85,6 +85,7 @@ if Rails.env.development?
       category_detail: row['category_detail'],
       places: row['places'],
       activity_day: row['activity_day'],
+      keywords: row['keywords'],
       created_at: Time.now,
       updated_at: Time.now
     }
@@ -96,6 +97,13 @@ if Rails.env.development?
       place_arry = hash[:places].split(',')
       company.company_places = place_arry.map do |place|
         company.company_places.build(place: place)
+      end
+    end
+    if hash[:keywords]
+      keyword_arry = hash[:keywords].to_s.split(/[[:space:]]/).reject(&:blank?).uniq
+      company.company_keywords = keyword_arry.map do |content|
+        keyword = Keyword.create_or_find_by(content: content)
+        company.company_keywords.build(keyword: keyword)
       end
     end
     if hash[:activity_day]

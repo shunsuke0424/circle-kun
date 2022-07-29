@@ -91,6 +91,16 @@
                   {{ company.athletic.name }}
                 </el-tag>
               </div>
+              <div class="keyword-container">
+                <el-tag
+                  v-for="keyword in company.keywords"
+                  :key="keyword.id"
+                  type="warning"
+                  class="category-tag keyword-tag"
+                >
+                  {{ keyword.content }}
+                </el-tag>
+              </div>
               <!-- カテゴリ -->
               <div class="keyword-container">
                 <i class="el-icon-location"></i
@@ -257,6 +267,9 @@ export default {
 }
 .circle-info-container {
   padding: 40px;
+}
+.keyword-tag {
+  margin-right: 4px;
 }
 .info {
   font-size: 16px;
