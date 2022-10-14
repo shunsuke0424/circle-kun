@@ -386,6 +386,11 @@ export default defineComponent({
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.el-card {
+  border-radius: 15px;
+}
+
 .detail-container {
   margin: 16px;
   border-bottom: 1px solid #9f4bff;
@@ -431,6 +436,7 @@ export default defineComponent({
   width: 100%;
   background-color: #6b00e3;
   color: white;
+  border-radius: 10px;
 }
 .select,
 .radio {
