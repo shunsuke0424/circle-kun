@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_27_145447) do
+ActiveRecord::Schema.define(version: 2022_11_14_111432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,6 +112,23 @@ ActiveRecord::Schema.define(version: 2022_05_27_145447) do
     t.index ["content"], name: "index_keywords_on_content", unique: true
   end
 
+  create_table "user_companies", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_user_companies_on_company_id"
+    t.index ["user_id"], name: "index_user_companies_on_user_id", unique: true
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "first_name", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "company_activity_days", "companies"
   add_foreign_key "company_arts", "arts"
   add_foreign_key "company_arts", "companies"
@@ -121,4 +138,6 @@ ActiveRecord::Schema.define(version: 2022_05_27_145447) do
   add_foreign_key "company_cultures", "cultures"
   add_foreign_key "company_keywords", "companies"
   add_foreign_key "company_places", "companies"
+  add_foreign_key "user_companies", "companies"
+  add_foreign_key "user_companies", "users"
 end

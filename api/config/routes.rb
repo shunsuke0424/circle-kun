@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'health_check', to: 'health_check#index'
 
   resources :companies, only: %i[index show create]
+  resources :users, only: %i[index show create update]
   resources :athletics, only: %i[index]
   resources :cultures, only: %i[index]
   resources :arts, only: %i[index]
