@@ -104,7 +104,7 @@
               <!-- カテゴリ -->
               <div class="keyword-container">
                 <i class="el-icon-location"></i
-                ><span class="explain-label">活動場所：</span>
+                ><span class="explain-label">メンバー：</span>
                 <span
                   v-for="place in company.places"
                   :key="place.id"
@@ -115,7 +115,7 @@
               </div>
               <div class="keyword-container">
                 <i class="el-icon-user-solid"></i
-                ><span class="explain-label">メンバー：</span>
+                ><span class="explain-label">活動場所：</span>
                 <span class="info"> {{ company.number || "-" }}名 </span>
               </div>
               <div class="keyword-container">
