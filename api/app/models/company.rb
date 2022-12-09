@@ -9,6 +9,8 @@ class Company < ApplicationRecord
   has_many :keyword, through: :company_keywords
   has_many :company_places, dependent: :destroy
   has_many :company_activity_days, dependent: :destroy
+  has_many :user_companies, dependent: :destroy
+  has_many :users, dependent: :destroy, through: :user_companies
 
   scope :scope_by_user, ->(search_params) {
     company_category_filter(search_params[:company_category])

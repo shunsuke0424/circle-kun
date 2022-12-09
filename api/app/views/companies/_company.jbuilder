@@ -30,3 +30,5 @@ end
 json.activity_day company.company_activity_days.map do |day|
   json.merge! day
 end
+
+json.member company.users

@@ -256,3 +256,40 @@ keywords = params.permit(:keywords)[:keywords].to_s.split(/[[:space:]]/).reject(
   @company.company_keywords.build(keyword: keyword)
 end
 exit
+params
+exit
+params
+params.permit(:last_name, :first_name, :email)
+.slice(:last_name, :first_name, :email)
+params.permit(:last_name, :first_name, :email).slice(:last_name, :first_name, :email)
+params[:company_id]
+params[:companyId]
+exit
+json
+json.call
+json.call(user, :id, :display_name, :last_name, :first_name, :email)
+json.company do
+  json.id user.company.id
+  json.name user.company.name
+end
+@users
+exit
+json
+json.id
+user.company.id
+json.id user.company.id
+user.company.name
+json.name
+json.name user.company.name
+json.name
+json.company
+exit
+json
+json.company
+user.company.id
+user.company.name
+user.company
+exit
+user.company
+user.company.name
+exit
