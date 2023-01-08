@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   def index
-    scope = Company.all
+    scope = Company.includes(:art, :culture, :athletic, :keyword, :company_activity_days, :company_places, :users)
     filter_params = params.slice(:company_category, :keyword, :place, :day, :category_name)
     scope = scope.scope_by_user(filter_params).order(number: :asc)
     @companies = scope
